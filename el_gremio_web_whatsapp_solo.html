@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Gremio | Trabajadores y empresas</title>
+<meta name="description" content="El Gremio conecta empresas y contratistas con trabajadores según su oficio, experiencia y disponibilidad.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root{
+  --bg:#0f1411;
+  --bg2:#151b17;
+  --card:#1c241e;
+  --card2:#f6f7f2;
+  --text:#f7f8f4;
+  --muted:#adb7ad;
+  --lime:#d8ff45;
+  --lime2:#bfe628;
+  --dark:#111512;
+  --line:rgba(255,255,255,.08);
+  --shadow:0 30px 80px rgba(0,0,0,.25);
+  --radius:26px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Inter,Arial,sans-serif;
+  background:#f3f5ef;
+  color:#151915;
+}
+a{text-decoration:none;color:inherit}
+.container{width:min(1180px,calc(100% - 34px));margin:auto}
+nav{
+  position:sticky;top:0;z-index:30;
+  background:rgba(15,20,17,.9);backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,255,255,.06)
+}
+.nav-wrap{
+  min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px
+}
+.brand{display:flex;align-items:center;gap:12px;color:#fff}
+.logo{
+  width:46px;height:46px;border-radius:14px;background:var(--lime);
+  color:#111;display:grid;place-items:center;font-weight:900;letter-spacing:-1px
+}
+.brand strong{display:block;font-size:15px;letter-spacing:.08em}
+.brand small{display:block;font-size:11px;color:#9faa9f;margin-top:2px}
+.nav-links{display:flex;align-items:center;gap:24px;color:#d6dcd4;font-size:14px;font-weight:600}
+.nav-links a:hover{color:#fff}
+.nav-btn{
+  background:var(--lime);color:#111!important;padding:11px 17px;border-radius:999px;font-weight:800
+}
+.hero{
+  background:
+    radial-gradient(circle at 80% 12%, rgba(216,255,69,.22), transparent 27%),
+    linear-gradient(135deg,#0e1310,#192019);
+  color:white;padding:90px 0 86px;overflow:hidden
+}
+.hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:50px;align-items:center}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;background:rgba(216,255,69,.1);
+  border:1px solid rgba(216,255,69,.28);color:var(--lime);
+  padding:8px 12px;border-radius:999px;font-weight:700;font-size:12px;letter-spacing:.06em
+}
+.hero h1{
+  font-size:clamp(48px,7vw,86px);line-height:.95;letter-spacing:-.06em;
+  margin:22px 0 24px;max-width:850px
+}
+.hero h1 .accent{color:var(--lime)}
+.hero p{
+  color:#bbc5ba;font-size:18px;max-width:650px;line-height:1.7;margin:0 0 30px
+}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  min-height:52px;padding:0 22px;border-radius:15px;font-size:15px;font-weight:800;
+  transition:.2s ease;border:0;cursor:pointer
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--lime);color:#111}
+.btn-primary:hover{background:var(--lime2)}
+.btn-outline{border:1px solid rgba(255,255,255,.15);color:#fff;background:rgba(255,255,255,.04)}
+.trust{
+  display:flex;flex-wrap:wrap;gap:18px;margin-top:28px;color:#aeb8ad;font-size:13px
+}
+.hero-card{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  padding:28px;border-radius:30px;box-shadow:var(--shadow);backdrop-filter:blur(10px)
+}
+.mini-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 6px rgba(216,255,69,.12)}
+.mini-top span{color:#aeb8ad;font-size:12px}
+.request-card{
+  background:#f6f7f2;color:#111;border-radius:22px;padding:22px;margin-top:12px
+}
+.request-card h3{margin:0 0 6px;font-size:22px}
+.request-card p{margin:0;color:#697168;font-size:14px}
+.meta{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0}
+.meta div{background:#fff;border-radius:14px;padding:13px;font-size:12px;color:#61695f}
+.meta strong{display:block;color:#111;font-size:14px;margin-top:3px}
+.progress{
+  height:9px;border-radius:999px;background:#e7e9e1;overflow:hidden;margin:15px 0 8px
+}
+.progress span{display:block;height:100%;width:72%;background:var(--lime2);border-radius:999px}
+.section{padding:88px 0}
+.section-head{max-width:760px;margin-bottom:42px}
+.kicker{font-size:12px;letter-spacing:.13em;font-weight:800;color:#71800f;margin-bottom:10px}
+.section h2{font-size:clamp(34px,5vw,58px);line-height:1.02;letter-spacing:-.045em;margin:0 0 16px}
+.section p{color:#667064;line-height:1.7}
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{
+  background:#fff;border:1px solid #dfe4db;border-radius:24px;padding:28px;
+  box-shadow:0 15px 40px rgba(24,33,24,.06)
+}
+.icon{
+  width:48px;height:48px;border-radius:15px;background:#eef7c9;display:grid;place-items:center;
+  font-size:23px;margin-bottom:18px
+}
+.card h3{margin:0 0 8px;font-size:20px}
+.card p{margin:0;font-size:14px}
+.dark-section{background:#111612;color:#fff}
+.dark-section .section-head p{color:#aab3a9}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.audience{
+  border-radius:28px;padding:34px;background:#1a211b;border:1px solid rgba(255,255,255,.08)
+}
+.audience.light{background:var(--lime);color:#101410;border:0}
+.audience h3{font-size:30px;margin:0 0 12px}
+.audience p{color:#aab3a9}
+.audience.light p{color:#3d4638}
+.list{list-style:none;padding:0;margin:22px 0 28px}
+.list li{margin:12px 0;padding-left:28px;position:relative}
+.list li:before{content:"✓";position:absolute;left:0;color:var(--lime);font-weight:900}
+.audience.light .list li:before{color:#111}
+.jobs{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
+.job{
+  background:#fff;border:1px solid #e0e4dc;border-radius:18px;padding:22px;
+  font-weight:700;display:flex;align-items:center;gap:10px
+}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stat{
+  background:#fff;border:1px solid #e0e4dc;border-radius:20px;padding:24px
+}
+.stat strong{font-size:32px;display:block}
+.stat span{font-size:13px;color:#70796e}
+.process{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.process .step{background:#fff;border-radius:24px;padding:28px;border:1px solid #e0e4dc}
+.num{
+  width:40px;height:40px;border-radius:12px;background:#111;color:var(--lime);
+  display:grid;place-items:center;font-weight:900;margin-bottom:18px
+}
+.cta{
+  background:linear-gradient(135deg,#d8ff45,#bfe628);padding:54px;border-radius:30px;
+  display:flex;align-items:center;justify-content:space-between;gap:28px
+}
+.cta h2{margin:0 0 8px;font-size:clamp(34px,5vw,54px)}
+.cta p{margin:0;color:#3f4938}
+.cta .btn{background:#111;color:white;white-space:nowrap}
+footer{background:#0d110e;color:#fff;padding:44px 0 22px;margin-top:88px}
+.footer-wrap{display:flex;justify-content:space-between;gap:30px}
+footer p{color:#899488;font-size:13px}
+small.note{display:block;color:#899488;margin-top:22px;border-top:1px solid rgba(255,255,255,.08);padding-top:18px}
+@media(max-width:900px){
+  .nav-links{display:none}
+  .hero-grid,.split{grid-template-columns:1fr}
+  .cards3,.process{grid-template-columns:1fr}
+  .jobs{grid-template-columns:repeat(2,1fr)}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .hero{padding-top:60px}
+}
+@media(max-width:600px){
+  .hero h1{font-size:48px}
+  .actions{display:grid}
+  .actions .btn{width:100%}
+  .jobs,.stats{grid-template-columns:1fr}
+  .cta{padding:34px 24px;display:block}
+  .cta .btn{margin-top:22px;width:100%}
+  .footer-wrap{display:block}
+}
+
+.company-form-section{
+  padding:88px 0;background:#eef1e9
+}
+.company-form-wrap{
+  display:grid;grid-template-columns:.8fr 1.2fr;gap:28px;align-items:start
+}
+.company-form-copy{
+  position:sticky;top:110px
+}
+.company-form-copy h2{
+  font-size:clamp(34px,5vw,56px);line-height:1.03;letter-spacing:-.045em;margin:0 0 16px
+}
+.company-form-copy p{color:#667064;line-height:1.7}
+.company-form-card{
+  background:#fff;border:1px solid #dfe4db;border-radius:28px;padding:30px;
+  box-shadow:0 18px 50px rgba(24,33,24,.08)
+}
+.company-form-card h3{margin:0 0 8px;font-size:26px}
+.company-form-card .sub{margin:0 0 24px;color:#6e776c;font-size:14px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-group{margin-bottom:15px}
+.form-group.full{grid-column:1/-1}
+.form-group label{display:block;font-size:13px;font-weight:800;margin-bottom:7px}
+.form-group input,.form-group select,.form-group textarea{
+  width:100%;border:1px solid #d9ded5;background:#fafbf7;border-radius:13px;
+  padding:13px 14px;font:inherit;color:#161a16;outline:none
+}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{
+  border-color:#a9c630;box-shadow:0 0 0 4px rgba(191,230,40,.16)
+}
+.checkbox-row{
+  display:flex;gap:10px;align-items:flex-start;margin:7px 0 18px;color:#626b60;font-size:12px
+}
+.checkbox-row input{margin-top:3px}
+.helper{
+  background:#f5f7ef;border-radius:14px;padding:13px 14px;margin-bottom:18px;
+  color:#586052;font-size:12px
+}
+.company-submit{width:100%;background:#111;color:#fff}
+.company-submit:hover{background:#252b25}
+.form-success{
+  display:none;margin-top:14px;padding:12px 14px;border-radius:12px;background:#eff7cf;
+  color:#415010;font-size:13px;font-weight:700
+}
+@media(max-width:900px){
+  .company-form-wrap{grid-template-columns:1fr}
+  .company-form-copy{position:static}
+}
+@media(max-width:600px){
+  .form-grid{grid-template-columns:1fr}
+  .company-form-card{padding:22px}
+}
+
+
+.floating-contact{
+  position:fixed;right:18px;bottom:18px;z-index:90;
+  display:flex;flex-direction:column;gap:10px
+}
+.float-btn{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  min-width:160px;padding:13px 16px;border-radius:999px;
+  font-weight:900;box-shadow:0 12px 30px rgba(0,0,0,.2)
+}
+.float-wa{background:#25D366;color:#07150c}
+.send-hint{
+  margin-top:10px;padding:12px 14px;border-radius:12px;
+  background:#fff5cf;color:#5d4b00;font-size:12px;line-height:1.5
+}
+@media(max-width:600px){
+  .floating-contact{left:12px;right:12px;bottom:12px}
+  .float-btn{width:100%;min-width:0;padding:12px 10px;font-size:13px}
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-wrap">
+    <a href="#inicio" class="brand">
+      <span class="logo">EG</span>
+      <span><strong>EL GREMIO</strong><small>Red de trabajadores</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="#como">Cómo funciona</a>
+      <a href="#trabajadores">Trabajadores</a>
+      <a href="#empresas">Empresas</a>
+      <a href="#oficios">Oficios</a>
+      <a href="#contacto" class="nav-btn">Contactar</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero" id="inicio">
+  <div class="container hero-grid">
+    <div>
+      <span class="badge">● PROYECTO PILOTO · ECUADOR</span>
+      <h1>Personal cuando lo necesitas. <span class="accent">Oportunidades cuando aparecen.</span></h1>
+      <p>
+        El Gremio conecta empresas y contratistas con trabajadores organizados por oficio,
+        experiencia y disponibilidad. Empezamos con construcción y mantenimiento.
+      </p>
+      <div class="actions">
+        <a href="#trabajadores" class="btn btn-primary">👷 Quiero registrarme</a>
+        <a href="#empresas" class="btn btn-outline">🏢 Necesito personal</a>
+      </div>
+      <div class="trust">
+        <span>✓ Registro inicial gratuito</span>
+        <span>✓ Atención directa</span>
+        <span>✓ Perfiles organizados</span>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="mini-top">
+        <div class="dot"></div>
+        <span>Solicitud simulada</span>
+      </div>
+      <div class="request-card">
+        <h3>5 ayudantes de construcción</h3>
+        <p>Quito · Disponible mañana</p>
+        <div class="meta">
+          <div>Sector<strong>Sur</strong></div>
+          <div>Jornada<strong>07:00–16:00</strong></div>
+          <div>Experiencia<strong>1+ año</strong></div>
+          <div>Estado<strong>Buscando perfiles</strong></div>
+        </div>
+        <div class="progress"><span></span></div>
+        <p>El Gremio revisa candidatos compatibles y los presenta al empleador.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="como">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">CÓMO FUNCIONA</div>
+      <h2>Un proceso sencillo antes de convertirlo en una app.</h2>
+      <p>Primero validamos que el servicio funcione de verdad. Después automatizamos lo que ya sabemos que funciona.</p>
+    </div>
+
+    <div class="cards3">
+      <div class="card">
+        <div class="icon">📝</div>
+        <h3>1. Registro</h3>
+        <p>El trabajador crea su perfil o la empresa nos indica qué personal necesita.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🔎</div>
+        <h3>2. Preselección</h3>
+        <p>Organizamos candidatos según oficio, experiencia, disponibilidad y ubicación.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🤝</div>
+        <h3>3. Conexión</h3>
+        <p>Presentamos candidatos para que empresa y trabajador continúen directamente el proceso.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark-section">
+  <div class="container split">
+    <div class="audience" id="trabajadores">
+      <div class="kicker" style="color:#d8ff45">PARA TRABAJADORES</div>
+      <h3>Haz que tu experiencia sea visible.</h3>
+      <p>Regístrate en nuestra red para que podamos conocerte y avisarte cuando exista una oportunidad compatible.</p>
+      <ul class="list">
+        <li>Registro inicial gratuito.</li>
+        <li>Perfil por oficio y experiencia.</li>
+        <li>Disponibilidad y zona de trabajo.</li>
+        <li>Oportunidades compatibles.</li>
+      </ul>
+      <a id="workerBtn" href="#" class="btn btn-primary">Registrarme por WhatsApp</a>
+    </div>
+
+    <div class="audience light" id="empresas">
+      <div class="kicker" style="color:#111">PARA EMPRESAS</div>
+      <h3>Encuentra candidatos sin empezar desde cero.</h3>
+      <p>Cuéntanos el perfil, la cantidad, la fecha y la ubicación. Buscamos coincidencias dentro de nuestra red.</p>
+      <ul class="list">
+        <li>Solicitud rápida de personal.</li>
+        <li>Perfiles organizados.</li>
+        <li>Preselección inicial.</li>
+        <li>Seguimiento del proceso.</li>
+      </ul>
+      <a href="#solicitar-personal" class="btn" style="background:#111;color:#fff">Solicitar personal</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="oficios">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">PRIMERA ETAPA</div>
+      <h2>Empezamos con construcción y mantenimiento.</h2>
+      <p>En lugar de intentar cubrir todo el mercado desde el primer día, construiremos primero una red especializada.</p>
+    </div>
+    <div class="jobs">
+      <div class="job">🏗️ Albañilería</div>
+      <div class="job">👷 Ayudantes</div>
+      <div class="job">🎨 Pintura</div>
+      <div class="job">⚡ Electricidad</div>
+      <div class="job">🚰 Plomería</div>
+      <div class="job">🔥 Soldadura</div>
+      <div class="job">🔧 Mantenimiento</div>
+      <div class="job">➕ Otros oficios</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:20px">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">CUANDO EMPECEMOS A CRECER</div>
+      <h2>La confianza se construirá con resultados reales.</h2>
+      <p>Estos indicadores se mostrarán públicamente únicamente cuando existan datos reales.</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><strong>—</strong><span>Trabajadores registrados</span></div>
+      <div class="stat"><strong>—</strong><span>Perfiles verificados</span></div>
+      <div class="stat"><strong>—</strong><span>Empresas atendidas</span></div>
+      <div class="stat"><strong>—</strong><span>Vinculaciones realizadas</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">PROCESO PARA EMPRESAS</div>
+      <h2>Solicitar personal debe ser rápido.</h2>
+    </div>
+    <div class="process">
+      <div class="step"><div class="num">1</div><h3>Describe la necesidad</h3><p>Oficio, cantidad, lugar, fecha, horario y pago ofrecido.</p></div>
+      <div class="step"><div class="num">2</div><h3>Revisamos candidatos</h3><p>Buscamos personas que coincidan con el perfil solicitado.</p></div>
+      <div class="step"><div class="num">3</div><h3>Recibe perfiles</h3><p>La empresa decide con quién continúa su proceso de contratación.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<section class="company-form-section" id="solicitar-personal">
+  <div class="container company-form-wrap">
+    <div class="company-form-copy">
+      <div class="kicker">SOLICITUD DE PERSONAL</div>
+      <h2>Cuéntanos exactamente qué personal necesitas.</h2>
+      <p>
+        Completa la solicitud y al final se abrirá WhatsApp con toda la información
+        ordenada para que El Gremio pueda revisar tu requerimiento y responderte más rápido.
+      </p>
+      <ul class="list" style="color:#202620">
+        <li style="padding-left:28px">No necesitas membresía para enviar una solicitud.</li>
+        <li style="padding-left:28px">Puedes solicitar uno o varios trabajadores.</li>
+        <li style="padding-left:28px">La solicitud no genera una contratación automática.</li>
+        <li style="padding-left:28px">El empleador mantiene la responsabilidad de contratación y obligaciones laborales.</li>
+      </ul>
+    </div>
+
+    <div class="company-form-card">
+      <h3>Solicitar personal</h3>
+      <p class="sub">Puedes enviar la solicitud aunque falte información. Los campos vacíos aparecerán como **** para completarlos después.</p>
+
+      <form id="companyRequestForm">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="empresa">Empresa o contratista</label>
+            <input id="empresa" name="empresa" type="text" placeholder="Ej.: Constructora ABC">
+          </div>
+
+          <div class="form-group">
+            <label for="contacto">Persona de contacto</label>
+            <input id="contacto" name="contacto" type="text" placeholder="Nombre y apellido">
+          </div>
+
+          <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <input id="telefono" name="telefono" type="tel" placeholder="09...">
+          </div>
+
+          <div class="form-group">
+            <label for="correo">Correo electrónico</label>
+            <input id="correo" name="correo" type="email" placeholder="empresa@correo.com">
+          </div>
+
+          <div class="form-group">
+            <label for="perfil">Perfil que necesita</label>
+            <select id="perfil" name="perfil">
+              <option value="">Seleccionar</option>
+              <option>Albañil</option>
+              <option>Ayudante de construcción</option>
+              <option>Pintor</option>
+              <option>Electricista</option>
+              <option>Plomero</option>
+              <option>Soldador</option>
+              <option>Personal de mantenimiento</option>
+              <option>Otro oficio</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="cantidad">Cantidad de trabajadores</label>
+            <input id="cantidad" name="cantidad" type="number" min="1" value="1">
+          </div>
+
+          <div class="form-group">
+            <label for="fecha">Fecha requerida</label>
+            <input id="fecha" name="fecha" type="date">
+          </div>
+
+          <div class="form-group">
+            <label for="urgencia">¿Cuándo los necesita?</label>
+            <select id="urgencia" name="urgencia">
+              <option value="">Seleccionar</option>
+              <option>Lo antes posible</option>
+              <option>Hoy</option>
+              <option>Mañana</option>
+              <option>Esta semana</option>
+              <option>En la fecha indicada</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="hora_inicio">Hora de inicio</label>
+            <input id="hora_inicio" name="hora_inicio" type="time">
+          </div>
+
+          <div class="form-group">
+            <label for="hora_fin">Hora estimada de fin</label>
+            <input id="hora_fin" name="hora_fin" type="time">
+          </div>
+
+          <div class="form-group full">
+            <label for="ubicacion">Sector / ubicación del trabajo</label>
+            <input id="ubicacion" name="ubicacion" type="text" placeholder="Ej.: Quito Sur, sector Quitumbe">
+          </div>
+
+          <div class="form-group">
+            <label for="pago">Pago ofrecido</label>
+            <input id="pago" name="pago" type="text" placeholder="Ej.: $30 por jornada">
+          </div>
+
+          <div class="form-group">
+            <label for="duracion">Duración estimada</label>
+            <select id="duracion" name="duracion">
+              <option value="">Seleccionar</option>
+              <option>1 día</option>
+              <option>2 a 3 días</option>
+              <option>1 semana</option>
+              <option>Varias semanas</option>
+              <option>Proyecto determinado</option>
+              <option>Por definir</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="experiencia">Experiencia mínima</label>
+            <select id="experiencia" name="experiencia">
+              <option>Sin experiencia mínima</option>
+              <option>6 meses</option>
+              <option>1 año</option>
+              <option>2 años</option>
+              <option>3 años o más</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="herramientas">¿Debe llevar herramientas?</label>
+            <select id="herramientas" name="herramientas">
+              <option>No</option>
+              <option>Sí</option>
+              <option>Algunas</option>
+              <option>Por definir</option>
+            </select>
+          </div>
+
+          <div class="form-group full">
+            <label for="funciones">Funciones principales</label>
+            <textarea id="funciones" name="funciones" rows="4" placeholder="Describe qué trabajo realizará la persona..."></textarea>
+          </div>
+
+          <div class="form-group full">
+            <label for="requisitos">Requisitos adicionales</label>
+            <textarea id="requisitos" name="requisitos" rows="3" placeholder="Ej.: experiencia en encofrado, puntualidad, disponibilidad para movilizarse..."></textarea>
+          </div>
+        </div>
+
+        <div class="helper">
+          <strong>Importante:</strong> El Gremio facilita la búsqueda y presentación de candidatos.
+          La empresa o persona que actúe como empleador define la contratación, condiciones de trabajo
+          y obligaciones laborales correspondientes.
+        </div>
+
+        <label class="checkbox-row">
+          <input id="aceptaEmpresa" type="checkbox">
+          <span>
+            Confirmo que la información ingresada es verdadera y autorizo a El Gremio a utilizarla
+            para gestionar esta solicitud y contactar candidatos compatibles.
+          </span>
+        </label>
+
+        <button class="btn company-submit" type="submit">📲 Abrir WhatsApp con la solicitud</button>
+        <div id="companySuccess" class="form-success">
+          Solicitud lista. Se abrirá WhatsApp con toda la información.
+        </div>
+        <div class="send-hint">
+      <strong>Importante:</strong> al pulsar el botón se abrirá WhatsApp con la solicitud ya escrita.
+      Para que llegue a El Gremio, la empresa debe tocar <strong>Enviar</strong> dentro de WhatsApp.
+    </div>
+
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contacto">
+  <div class="container">
+    <div class="cta">
+      <div>
+        <h2>¿Quieres formar parte de El Gremio?</h2>
+        <p>Escríbenos por WhatsApp y dinos si buscas una oportunidad o necesitas personal.</p>
+      </div>
+      <a id="contactBtn" href="#" class="btn">💬 Hablar por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+
+<div class="floating-contact">
+  <a class="float-btn float-wa"
+     href="https://wa.me/593987260582?text=Hola%2C%20necesito%20personal%20urgente%20mediante%20El%20Gremio."
+     target="_self">💬 WhatsApp ahora</a>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-wrap">
+      <div class="brand">
+        <span class="logo">EG</span>
+        <span><strong>EL GREMIO</strong><small>Red de trabajadores</small></span>
+      </div>
+      <p>Proyecto piloto · Ecuador</p>
+    </div>
+    <small class="note">
+      El Gremio facilita procesos de búsqueda y conexión. El registro no garantiza contratación.
+      Las condiciones y obligaciones laborales corresponden a quien actúe como empleador.
+    </small>
+  </div>
+</footer>
+
+<script>
+const PHONE = "593987260582";
+
+// Construye un enlace compatible con WhatsApp móvil y WhatsApp Web.
+// Al usar api.whatsapp.com/send evitamos bloqueos frecuentes de pop-ups
+// y dejamos que WhatsApp decida si abrir la app o la versión web.
+function whatsappURL(message){
+  return "https://wa.me/" + PHONE + "?text=" + encodeURIComponent(message);
+}
+
+function goWA(message){
+  const url = whatsappURL(message);
+  // Redirección directa: más confiable que window.open cuando el archivo se abre localmente.
+  window.location.href = url;
+}
+
+// Registro de trabajador
+const workerBtn = document.getElementById("workerBtn");
+if (workerBtn) {
+  workerBtn.addEventListener("click", function(e){
+    e.preventDefault();
+    const message =
+`👷 *REGISTRO DE TRABAJADOR - EL GREMIO*
+
+Hola, quiero registrarme como trabajador en El Gremio.
+
+Por favor indíquenme cómo continuar con mi registro.`;
+    goWA(message);
+  });
+}
+
+// Contacto general
+const contactBtn = document.getElementById("contactBtn");
+if (contactBtn) {
+  contactBtn.addEventListener("click", function(e){
+    e.preventDefault();
+    const message =
+`💬 *CONTACTO - EL GREMIO*
+
+Hola, quisiera información sobre El Gremio.`;
+    goWA(message);
+  });
+}
+
+// Solicitud de personal
+const companyForm = document.getElementById("companyRequestForm");
+if (companyForm) {
+  companyForm.addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const f = new FormData(companyForm);
+
+    const clean = (value) => {
+      const v = (value ?? "").toString().trim();
+      return v === "" ? "****" : v;
+    };
+
+    const empresa = clean(f.get("empresa"));
+    const contacto = clean(f.get("contacto"));
+    const telefono = clean(f.get("telefono"));
+    const correo = clean(f.get("correo"));
+    const perfil = clean(f.get("perfil"));
+    const cantidad = clean(f.get("cantidad"));
+    const experiencia = clean(f.get("experiencia"));
+    const herramientas = clean(f.get("herramientas"));
+    const fecha = clean(f.get("fecha"));
+    const urgencia = clean(f.get("urgencia"));
+    const horaInicio = clean(f.get("hora_inicio"));
+    const horaFin = clean(f.get("hora_fin"));
+    const ubicacion = clean(f.get("ubicacion"));
+    const duracion = clean(f.get("duracion"));
+    const pago = clean(f.get("pago"));
+    const funciones = clean(f.get("funciones"));
+    const requisitos = clean(f.get("requisitos"));
+
+    let horario = "****";
+    if (horaInicio !== "****" && horaFin !== "****") {
+      horario = horaInicio + " a " + horaFin;
+    } else if (horaInicio !== "****") {
+      horario = horaInicio;
+    } else if (horaFin !== "****") {
+      horario = "**** a " + horaFin;
+    }
+
+    const message =
+`🏢 *NUEVA SOLICITUD DE PERSONAL - EL GREMIO*
+
+*DATOS DE LA EMPRESA*
+• Empresa / contratista: ${empresa}
+• Persona de contacto: ${contacto}
+• Teléfono: ${telefono}
+• Correo: ${correo}
+
+*PERSONAL REQUERIDO*
+• Perfil: ${perfil}
+• Cantidad: ${cantidad}
+• Experiencia mínima: ${experiencia}
+• ¿Debe llevar herramientas?: ${herramientas}
+
+*DATOS DEL TRABAJO*
+• Fecha requerida: ${fecha}
+• Urgencia: ${urgencia}
+• Horario: ${horario}
+• Ubicación: ${ubicacion}
+• Duración estimada: ${duracion}
+• Pago ofrecido: ${pago}
+
+*FUNCIONES PRINCIPALES*
+${funciones}
+
+*REQUISITOS ADICIONALES*
+${requisitos}
+
+✅ Solicitud enviada a El Gremio para revisión.`;
+
+    const success = document.getElementById("companySuccess");
+    if (success) {
+      success.style.display = "block";
+      success.textContent = "Abriendo WhatsApp con tu solicitud...";
+    }
+
+    goWA(message);
+  });
+}
+
+// Fallback: si el usuario vuelve atrás desde WhatsApp, conserva el formulario
+// y puede volver a enviarlo sin perder la información.
+</script>
+</body>
+</html>
